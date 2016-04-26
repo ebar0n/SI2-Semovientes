@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  postgres:
+    extends:
+      file: docker-compose-common.yml
+      service: postgres
+    restart: always
+
+  django:
+    extends:
+      file: docker-compose-common.yml
+      service: semovientes-production
+    command: uwsgi --emperor uwsgi.ini
+    depends_on:
+      - postgres
+
+  nginx:
+    extends:
+      file: docker-compose-common.yml
+      service: nginx
+    ports:
+      - "80:80"

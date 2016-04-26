@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  postgres:
+    image: postgres:9.5
+    volumes:
+      - /data/semovientes/postgres:/var/lib/postgresql/data
+    env_file: ./django/semovientes/settings/.env
+
+  nginx:
+    build: ./compose/nginx
+    restart: always
+    env_file: ./django/semovientes/settings/.env
+    volumes:
+      - ./django/public/:/srv/www/django/
+      - ./run:/srv/www/run
+
+  semovientes-develoment:
+    build:
+      context: .
+      dockerfile: Dockerfile-Development
+    env_file: ./django/semovientes/settings/.env
+    volumes:
+      - ./django:/srv/www/django
+    working_dir: /srv/www/django
+
+  semovientes-production:
+    extends:
+      service: semovientes-develoment
+    build:
+      dockerfile: Dockerfile-Production
+    volumes:
+      - ./run:/srv/www/run
+    restart: always

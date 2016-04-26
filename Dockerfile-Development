@@ -1,0 +1,19 @@
+FROM python:3.5
+MAINTAINER semovientesTeam
+
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update && apt-get install -y postgresql-client \
+    gcc gettext  \
+    --no-install-recommends && rm -rf /var/lib/apt/lists/*
+
+COPY ./requirements/base.pip /requirements/base.pip
+COPY ./requirements/development.pip /requirements/development.pip
+RUN pip install --upgrade pip
+RUN pip install -r /requirements/development.pip
+
+COPY ./compose/django/entrypoint.sh /entrypoint.sh
+RUN sed -i 's/\r//' /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
