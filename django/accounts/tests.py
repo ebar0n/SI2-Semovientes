@@ -1,5 +1,4 @@
 import pytest
-
 from accounts import factories
 from accounts.models import Account
 

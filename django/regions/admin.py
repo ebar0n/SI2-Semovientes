@@ -1,28 +1,27 @@
 from django.contrib import admin
-
 from regions import models
 
 
-@admin.register(models.Paises)
-class PaisesAdmin(admin.ModelAdmin):
+@admin.register(models.Country)
+class CountryAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(models.Estados)
-class EstadosAdmin(admin.ModelAdmin):
+@admin.register(models.Estate)
+class EstateAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(models.Ciudades)
-class CiudadesAdmin(admin.ModelAdmin):
+@admin.register(models.City)
+class CityAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(models.Municipios)
-class MunicipiosAdmin(admin.ModelAdmin):
+@admin.register(models.Municipality)
+class MunicipalityAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(models.Parroquias)
-class ParroquiasAdmin(admin.ModelAdmin):
+@admin.register(models.Parish)
+class ParishAdmin(admin.ModelAdmin):
     pass

@@ -2,9 +2,9 @@
 from django.db import models
 
 
-class Paises(models.Model):
+class Country(models.Model):
 
-    nombre = models.CharField(
+    name = models.CharField(
         max_length=100
     )
 
@@ -23,17 +23,17 @@ class Paises(models.Model):
         verbose_name_plural = 'Paises'
 
     def __str__(self):
-        return self.nombre
+        return self.name
 
 
-class Estados(models.Model):
+class Estate(models.Model):
 
-    nombre = models.CharField(
+    name = models.CharField(
         max_length=100
     )
 
-    pais = models.ForeignKey(
-        'Paises'
+    country = models.ForeignKey(
+        'Country'
     )
 
     created_at = models.DateTimeField(
@@ -51,17 +51,17 @@ class Estados(models.Model):
         verbose_name_plural = 'Estados'
 
     def __str__(self):
-        return self.nombre
+        return self.name
 
 
-class Ciudades(models.Model):
+class City(models.Model):
 
-    nombre = models.CharField(
+    name = models.CharField(
         max_length=100
     )
 
-    estado = models.ForeignKey(
-        'Estados'
+    estate = models.ForeignKey(
+        'Estate'
     )
 
     created_at = models.DateTimeField(
@@ -79,17 +79,17 @@ class Ciudades(models.Model):
         verbose_name_plural = 'Ciudades'
 
     def __str__(self):
-        return self.nombre
+        return self.name
 
 
-class Municipios(models.Model):
+class Municipality(models.Model):
 
-    nombre = models.CharField(
+    name = models.CharField(
         max_length=100
     )
 
-    ciudad = models.ForeignKey(
-        'Ciudades'
+    city = models.ForeignKey(
+        'City'
     )
 
     created_at = models.DateTimeField(
@@ -107,17 +107,17 @@ class Municipios(models.Model):
         verbose_name_plural = 'Municipios'
 
     def __str__(self):
-        return self.nombre
+        return self.name
 
 
-class Parroquias(models.Model):
+class Parish(models.Model):
 
-    nombre = models.CharField(
+    name = models.CharField(
         max_length=100
     )
 
-    municipio = models.ForeignKey(
-        'Municipios'
+    municipality = models.ForeignKey(
+        'municipality'
     )
 
     created_at = models.DateTimeField(
@@ -135,4 +135,4 @@ class Parroquias(models.Model):
         verbose_name_plural = 'Parroquias'
 
     def __str__(self):
-        return self.nombre
+        return self.name

@@ -1,7 +1,6 @@
 import factory
-from faker import Factory as FakerFactory
-
 from accounts.models import Account
+from faker import Factory as FakerFactory
 
 faker = FakerFactory.create()
 
