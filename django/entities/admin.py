@@ -9,4 +9,4 @@ class AdministrativeUnitInline(admin.StackedInline):
 
 @admin.register(models.Entity)
 class EntityAdmin(admin.ModelAdmin):
-	inlines = (AdministrativeUnitInline,)
+    inlines = (AdministrativeUnitInline,)

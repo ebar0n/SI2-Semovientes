@@ -1,6 +1,8 @@
 from django.contrib import admin
-from goods import models
+
 from entities.models import AdministrativeUnit
+from goods import models
+
 
 @admin.register(models.Catalog)
 class CatalogAdmin(admin.ModelAdmin):
@@ -9,6 +11,7 @@ class CatalogAdmin(admin.ModelAdmin):
 
 class PurlieuInline(admin.StackedInline):
     model = models.Purlieu
+
 
 class AssetsInline(admin.StackedInline):
     model = models.Assets
@@ -21,7 +24,7 @@ class GoodsAdmin(admin.ModelAdmin):
     list_filter = ()
     search_fields = ()
     inlines = (AssetsInline,)
-    
+
     def get_name(self, obj):
         return obj.assets.name
     get_name.short_description = 'Nombre'

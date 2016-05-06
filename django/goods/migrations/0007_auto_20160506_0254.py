@@ -15,11 +15,14 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='assets',
             name='correlative',
-            field=models.SlugField(editable=False, help_text='Ingrese el correlativo del activo', max_length=100, verbose_name='Correlativo (*)'),
+            field=models.SlugField(
+                editable=False, help_text='Ingrese el correlativo del activo', max_length=100,
+                verbose_name='Correlativo (*)'),
         ),
         migrations.AlterField(
             model_name='purlieu',
             name='west',
-            field=models.DecimalField(decimal_places=2, max_digits=10, verbose_name='Oeste (*)'),
+            field=models.DecimalField(
+                decimal_places=2, max_digits=10, verbose_name='Oeste (*)'),
         ),
     ]

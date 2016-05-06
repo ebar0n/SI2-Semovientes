@@ -350,7 +350,6 @@ class Semoviente(models.Model):
         editable=False,
     )
 
-
     class Meta:
         verbose_name = 'Semoviente'
         verbose_name_plural = 'Semovientes'
