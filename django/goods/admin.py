@@ -7,8 +7,11 @@ from goods import models
 
 @admin.register(models.Catalog)
 class CatalogAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('codigo', 'classification')
 
+    def codigo(self, obj):
+        return obj.pk
+    codigo.short_description = 'Código'
 
 class PurlieuInline(admin.StackedInline):
     model = models.Purlieu
