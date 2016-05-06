@@ -1,8 +1,8 @@
+from django import forms
 from django.contrib import admin
 
 from entities.models import AdministrativeUnit
 from goods import models
-from django import forms
 
 
 @admin.register(models.Catalog)
@@ -16,8 +16,9 @@ class PurlieuInline(admin.StackedInline):
 
 class AssetsForm(forms.ModelForm):
     bulk_create = forms.IntegerField(label='N bienes extra', min_value=0, initial=0)
+
     class Meta:
-        fields = ('catalog', 'name', 'code', 'administrative_unit')
+        fields = ('catalog', 'name', 'code', 'administrative_unit', 'bulk_create')
         model = models.Assets
 
 
@@ -60,7 +61,12 @@ class GoodsAdmin(admin.ModelAdmin):
         assets = obj.assets
 
         for i in range(0, int(request.POST.get(
-            'assets-{}-bulk_create'.format(request.POST.get('assets-__prefix__-bulk_create'))))):
+                            'assets-{}-bulk_create'.format(
+                                request.POST.get('assets-__prefix__-bulk_create')
+                            )
+                        )
+                    )
+                ):
 
             assets.pk = None
             setattr(assets, obj_model, None)
