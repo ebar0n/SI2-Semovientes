@@ -101,6 +101,8 @@ class FurnishingAdmin(GoodsAdmin):
     search_fields = ('assets__name', 'assets__correlative',
                      'colour__name', 'model__name', 'unit__name')
 
+    list_filter = ('model', 'colour', 'unit')
+
 
 @admin.register(models.Property)
 class PropertyAdmin(GoodsAdmin):
@@ -109,7 +111,7 @@ class PropertyAdmin(GoodsAdmin):
                     'file_number', 'registry_number', 'registry_day')
     search_fields = ('assets__name', 'assets__correlative',
                      'file_number', 'registry_number', 'registry_day')
-
+    list_filter = ('registry_day',)
 
 @admin.register(models.Semoviente)
 class SemovienteAdmin(GoodsAdmin):
@@ -117,3 +119,4 @@ class SemovienteAdmin(GoodsAdmin):
                     'species', 'gender',)
     search_fields = ('assets__name', 'assets__correlative',
                      'species__name', 'gender__name',)
+    list_filter = ('species', 'gender')
