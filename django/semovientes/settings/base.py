@@ -49,6 +49,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # apps
     'accounts',
+    'regions',
+    'entities',
+    'parameters',
+    'goods',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,7 +90,11 @@ WSGI_APPLICATION = 'semovientes.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL')
+    # 'default': env.db('DATABASE_URL')
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'local',
+    }
 }
 
 # Internationalization
