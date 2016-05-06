@@ -1,62 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
-class Purlieu(models.Model):
-
-    north = models.DecimalField(
-        decimal_places=2,
-        max_digits=10,
-        verbose_name="Norte (*)",
-    )
-
-    south = models.DecimalField(
-        decimal_places=2,
-        max_digits=10,
-        verbose_name="Sur (*)",
-    )
-
-    east = models.DecimalField(
-        decimal_places=2,
-        max_digits=10,
-        verbose_name="Este (*)",
-    )
-
-    west = models.DecimalField(
-        decimal_places=2,
-        max_digits=10,
-        verbose_name="Este (*)",
-    )
-
-    land_area = models.DecimalField(
-        decimal_places=2,
-        max_digits=10,
-        verbose_name="Area del terreno (*)",
-    )
-
-    covered_area = models.DecimalField(
-        decimal_places=2,
-        max_digits=10,
-        verbose_name="Area cubierta (*)",
-    )
-
-    built_area = models.DecimalField(
-        decimal_places=2,
-        max_digits=10,
-        verbose_name="Area construida (*)",
-    )
-
-    total_area = models.DecimalField(
-        decimal_places=2,
-        max_digits=10,
-        verbose_name="Area total (*)",
-    )
-
-    class Meta:
-        verbose_name = 'Lindero'
-        verbose_name_plural = 'Linderos'
-
-
 class Function(models.Model):
 
     description = models.CharField(

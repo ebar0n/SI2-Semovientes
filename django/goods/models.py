@@ -109,11 +109,11 @@ class Furnishing(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Activo'
-        verbose_name_plural = 'Activos'
+        verbose_name = 'Mueble'
+        verbose_name_plural = 'Muebles'
 
     def __str__(self):
-        return self.name
+        return self.description
 
 
 class Property(models.Model):
@@ -205,10 +205,6 @@ class Property(models.Model):
         help_text="Ingrese el avaluo de comision"
     )
 
-    purlieu = models.ForeignKey(
-        'parameters.Purlieu'
-    )
-
     function = models.ForeignKey(
         'parameters.Function'
     )
@@ -229,6 +225,65 @@ class Property(models.Model):
 
     def __str__(self):
         return self.description
+
+
+class Purlieu(models.Model):
+
+    north = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Norte (*)",
+    )
+
+    south = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Sur (*)",
+    )
+
+    east = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Este (*)",
+    )
+
+    west = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Oeste (*)",
+    )
+
+    land_area = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Area del terreno (*)",
+    )
+
+    covered_area = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Area cubierta (*)",
+    )
+
+    built_area = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Area construida (*)",
+    )
+
+    total_area = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Area total (*)",
+    )
+
+    property = models.OneToOneField(
+        'Property'
+    )
+
+    class Meta:
+        verbose_name = 'Lindero'
+        verbose_name_plural = 'Linderos'
 
 
 class Semoviente(models.Model):
@@ -295,6 +350,7 @@ class Semoviente(models.Model):
         editable=False,
     )
 
+
     class Meta:
         verbose_name = 'Semoviente'
         verbose_name_plural = 'Semovientes'
@@ -309,6 +365,10 @@ class Catalog(models.Model):
         max_length=100,
         verbose_name="Clasificacion (*)",
         help_text="Ingrese la Clasificacion"
+    )
+
+    origin = models.ForeignKey(
+        'self', null=True, blank=True
     )
 
     created_at = models.DateTimeField(
@@ -326,7 +386,7 @@ class Catalog(models.Model):
         verbose_name_plural = 'Catalogos'
 
     def __str__(self):
-        return self.name
+        return self.classification
 
 
 class Assets(models.Model):
@@ -337,30 +397,34 @@ class Assets(models.Model):
         help_text="Ingrese el nombre del activo"
     )
 
-    correlative = models.CharField(
-        unique=True,
+    correlative = models.SlugField(
         max_length=100,
         verbose_name="Correlativo (*)",
-        help_text="Ingrese el correlativo del activo"
+        help_text="Ingrese el correlativo del activo",
+        editable=False
     )
 
     code = models.CharField(
-        unique=True,
         max_length=100,
-        verbose_name="Codigo (*)",
-        help_text="Ingrese el codigo del activo"
+        verbose_name="Codigo alterno (*)",
+        help_text="Ingrese el codigo del activo",
+        blank=True,
     )
 
-    furnishing = models.ForeignKey(
-        'Furnishing'
+    administrative_unit = models.ForeignKey(
+        'entities.AdministrativeUnit'
     )
 
-    property = models.ForeignKey(
-        'Property'
+    furnishing = models.OneToOneField(
+        'Furnishing', null=True
     )
 
-    semoviente = models.ForeignKey(
-        'Semoviente'
+    property = models.OneToOneField(
+        'Property', null=True
+    )
+
+    semoviente = models.OneToOneField(
+        'Semoviente', null=True
     )
 
     catalog = models.ForeignKey(
