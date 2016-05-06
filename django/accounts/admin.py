@@ -1,7 +1,5 @@
-from accounts import models
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-
 from django.utils.translation import ugettext as _
 
 from accounts import models

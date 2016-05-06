@@ -34,6 +34,6 @@ script:
   - docker ps
   - docker-compose -v
   - docker-compose ps
-  # - docker-compose run --rm django isort -c -rc -df
+  - docker-compose run --rm django isort -c -rc -df
   - docker-compose run --rm django flake8
   - docker-compose run --rm django py.test --ds=semovientes.settings.testing

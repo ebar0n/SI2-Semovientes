@@ -39,6 +39,10 @@ Management tasks [Trello](https://trello.com/b/LuG7sNPO/)
 
         docker-compose run --rm django python manage.py migrate
 
+0. Load data initial
+
+        docker-compose run --rm django python manage.py loaddata fixture data
+
 0. Create superuser (Execute command and follow the steps)
     
         docker-compose run --rm django python manage.py createsuperuser
