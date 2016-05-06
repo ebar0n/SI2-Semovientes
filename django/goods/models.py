@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Furnishing(models.Model):
 
     description = models.CharField(
@@ -124,6 +125,91 @@ class Property(models.Model):
         help_text="Ingrese la descripcion del inmueble"
     )
 
+    file_number = models.CharField(
+        max_length=100,
+        verbose_name="Numero de expediente (*)",
+        help_text="Ingrese el numero de expediente"
+    )
+
+    file_number = models.CharField(
+        max_length=100,
+        verbose_name="Numero de expediente (*)",
+        help_text="Ingrese el numero de expediente"
+    )
+
+    registry_number = models.CharField(
+        max_length=100,
+        verbose_name="Numero de registro (*)",
+        help_text="Ingrese el numero de registro"
+    )
+
+    folio_number = models.CharField(
+        max_length=100,
+        verbose_name="Numero de folio (*)",
+        help_text="Ingrese el numero de folio"
+    )
+
+    registry_day = models.DateField(
+        verbose_name="Fecha de registro(*)",
+        help_text="Ingrese la fecha de registro"
+    )
+
+    registration_office = models.CharField(
+        max_length=100,
+        verbose_name="Oficina de registro (*)",
+        help_text="Ingrese la oficina de registro"
+    )
+
+    protocol = models.CharField(
+        max_length=100,
+        verbose_name="Protocolo (*)",
+        help_text="Ingrese el protocolo"
+    )
+
+    volume = models.CharField(
+        max_length=100,
+        verbose_name="Tomo (*)",
+        help_text="Ingrese el tomo"
+    )
+
+    quarter = models.CharField(
+        max_length=100,
+        verbose_name="Trimestre (*)",
+        help_text="Ingrese el trismetre"
+    )
+
+    down_payment  = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Deposito de garantia (*)",
+        help_text="Ingrese el deposito de garantia"
+    )
+
+    rent_amount = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Monto de alquiler (*)",
+        help_text="Ingrese el monto de alquiler"
+    )
+
+    appraised_current = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Avaluo actual (*)",
+        help_text="Ingrese el avaluo actual"
+    )
+
+    appraised_commision = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Avaluo comision (*)",
+        help_text="Ingrese el avaluo de comision"
+    )
+
+    purlieu = models.ForeignKey(
+        'parameters.Purlieu'
+    )
+
     function = models.ForeignKey(
         'parameters.Function'
     )
@@ -152,6 +238,44 @@ class Semoviente(models.Model):
         max_length=100,
         verbose_name="Descripcion (*)",
         help_text="Ingrese la descripcion del semoviente"
+    )
+
+    birth_day = models.DateField(
+        default=False,
+        verbose_name="Fecha de nacimiento (*)",
+        help_text="Ingrese la fecha de nacimiento"
+    )
+
+    birth_weight = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Peso de nacimiento (*)",
+        help_text="Ingrese el peso de nacimiento"
+    )
+
+    birth_estimated_value = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Valor estimado de nacimiento (*)",
+        help_text="Ingrese el valor estimado de nacimiento"
+    )
+
+    current_weight = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Peso actual (*)",
+        help_text="Ingrese el peso actual"
+    )
+
+    acquisition_value = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Valor de adquisicion (*)",
+        help_text="Ingrese el valor de adquisicion"
+    )
+
+    species = models.ForeignKey(
+        'parameters.Species'
     )
 
     gender = models.ForeignKey(

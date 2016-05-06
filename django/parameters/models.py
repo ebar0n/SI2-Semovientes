@@ -2,6 +2,62 @@ from django.db import models
 
 # Create your models here.
 
+
+class Purlieu(models.Model):
+
+    north = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Norte (*)",
+    )
+
+    south = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Sur (*)",
+    )
+
+    east = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Este (*)",
+    )
+
+    west = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Este (*)",
+    )
+
+    land_area  = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Area del terreno (*)",
+    )
+
+    covered_area = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Area cubierta (*)",
+    )
+
+    built_area = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Area construida (*)",
+    )
+
+    total_area = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name="Area total (*)",
+    )
+
+    class Meta:
+        verbose_name = 'Lindero'
+        verbose_name_plural = 'Linderos'
+
+
 class Function(models.Model):
 
     description = models.CharField(
@@ -27,6 +83,31 @@ class Function(models.Model):
     def __str__(self):
         return self.name
 
+
+class Species(models.Model):
+
+    name = models.CharField(
+        max_length=100,
+        verbose_name="Nombre (*)",
+        help_text="Ingrese el nombre de la especie"
+    )
+
+    created_at = models.DateTimeField(
+        auto_now=True,
+        editable=False,
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        editable=False,
+    )
+
+    class Meta:
+        verbose_name = 'Especie'
+        verbose_name_plural = 'Especies'
+
+    def __str__(self):
+        return self.name
 
 class Gender(models.Model):
 
