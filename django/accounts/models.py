@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 from django.utils.translation import ugettext as _
 
 
@@ -21,6 +22,10 @@ class Account(AbstractUser):
         * groups
         * user_permissions
     """
+
+    entity = models.OneToOneField(
+        'entities.Entity', null=True
+    )
 
     class Meta:
         verbose_name = _('User')

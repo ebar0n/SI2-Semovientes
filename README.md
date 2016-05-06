@@ -36,8 +36,13 @@ Management tasks [Trello](https://trello.com/b/LuG7sNPO/)
         docker-compose build
 
 0. Create migrations
-
+    
+        docker-compose up -d postgres
         docker-compose run --rm django python manage.py migrate
+
+0. Load data initial
+
+        docker-compose run --rm django python manage.py loaddata fixture data
 
 0. Create superuser (Execute command and follow the steps)
     
@@ -101,8 +106,11 @@ Management tasks [Trello](https://trello.com/b/LuG7sNPO/)
         docker-compose -f docker-compose-production.yml build
 
 0. Initialize
-
+        
+        docker-compose -f docker-compose-production.yml up -d postgres
         docker-compose -f docker-compose-production.yml run --rm django python manage.py migrate --noinput
+        docker-compose -f docker-compose-production.yml run --rm django python manage.py loaddata fixture data
+        docker-compose -f docker-compose-production.yml run --rm django python manage.py createsuperuser
         docker-compose -f docker-compose-production.yml run --rm django python manage.py collectstatic --noinput
 
 0. Run Django server
