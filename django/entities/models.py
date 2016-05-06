@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Entity(models.Model):
 
@@ -18,11 +19,11 @@ class Entity(models.Model):
     )
 
     fax = models.CharField(
-        max_length = 12,
-        verbose_name = "Fax ",
+        max_length=12,
+        verbose_name="Fax ",
         help_text="Ingrese el fax de la entidad",
-        null = True,
-        blank = True
+        null=True,
+        blank=True
     )
 
     email = models.EmailField(

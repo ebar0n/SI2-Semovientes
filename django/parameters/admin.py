@@ -1,6 +1,6 @@
 from django.contrib import admin
-
 from parameters import models
+
 
 # Register your models here.
 @admin.register(models.Function)
@@ -36,4 +36,3 @@ class MakeAdmin(admin.ModelAdmin):
 @admin.register(models.Model)
 class ModelAdmin(admin.ModelAdmin):
     pass
-

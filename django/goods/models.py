@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class Furnishing(models.Model):
 
     description = models.CharField(
@@ -178,7 +177,7 @@ class Property(models.Model):
         help_text="Ingrese el trismetre"
     )
 
-    down_payment  = models.DecimalField(
+    down_payment = models.DecimalField(
         decimal_places=2,
         max_digits=10,
         verbose_name="Deposito de garantia (*)",

@@ -1,8 +1,7 @@
 from django.db import models
 
+
 # Create your models here.
-
-
 class Purlieu(models.Model):
 
     north = models.DecimalField(
@@ -29,7 +28,7 @@ class Purlieu(models.Model):
         verbose_name="Este (*)",
     )
 
-    land_area  = models.DecimalField(
+    land_area = models.DecimalField(
         decimal_places=2,
         max_digits=10,
         verbose_name="Area del terreno (*)",
@@ -108,6 +107,7 @@ class Species(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Gender(models.Model):
 

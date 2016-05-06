@@ -18,10 +18,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Assets',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='Ingrese el nombre del activo', max_length=100, verbose_name='Nombre (*)')),
-                ('correlative', models.CharField(help_text='Ingrese el correlativo del activo', max_length=100, unique=True, verbose_name='Correlativo (*)')),
-                ('code', models.CharField(help_text='Ingrese el codigo del activo', max_length=100, unique=True, verbose_name='Codigo (*)')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(help_text='Ingrese el nombre del activo',
+                                          max_length=100, verbose_name='Nombre (*)')),
+                ('correlative', models.CharField(help_text='Ingrese el correlativo del activo',
+                                                 max_length=100, unique=True, verbose_name='Correlativo (*)')),
+                ('code', models.CharField(help_text='Ingrese el codigo del activo',
+                                          max_length=100, unique=True, verbose_name='Codigo (*)')),
                 ('created_at', models.DateTimeField(auto_now=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
             ],
@@ -33,8 +37,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Catalog',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('classification', models.CharField(help_text='Ingrese la Clasificacion', max_length=100, verbose_name='Clasificacion (*)')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
+                ('classification', models.CharField(help_text='Ingrese la Clasificacion',
+                                                    max_length=100, verbose_name='Clasificacion (*)')),
                 ('created_at', models.DateTimeField(auto_now=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
             ],
@@ -46,24 +52,41 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Furnishing',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('description', models.CharField(help_text='Ingrese la descripcion del mueble', max_length=100, verbose_name='Descripcion (*)')),
-                ('year', models.IntegerField(blank=True, help_text='Ingrese el año del mueble', null=True, verbose_name='Año')),
-                ('capacity', models.IntegerField(blank=True, help_text='Ingrese la capacidad del mueble', null=True, verbose_name='Capacidad (*)')),
-                ('number_pieces', models.IntegerField(blank=True, help_text='Ingrese la numero de piezas del mueble', null=True, verbose_name='Numero de piezas (*)')),
-                ('serial', models.CharField(blank=True, help_text='Ingrese el serial del mueble', max_length=100, null=True, verbose_name='Serial (*)')),
-                ('license', models.CharField(blank=True, help_text='Ingrese la placa del mueble', max_length=100, null=True, verbose_name='Placa (*)')),
-                ('height', models.IntegerField(blank=True, help_text='Altura del mueble', null=True, verbose_name='Altura (*)')),
-                ('width', models.IntegerField(blank=True, help_text='Anchura del mueble', null=True, verbose_name='Anchura (*)')),
-                ('length', models.IntegerField(blank=True, help_text='Longitud del mueble', null=True, verbose_name='Longitud (*)')),
-                ('useful_life', models.IntegerField(blank=True, help_text='Vida util del mueble', null=True, verbose_name='Vida util (*)')),
-                ('photo', models.ImageField(blank=True, help_text='Ingrese la foto del mueble', null=True, upload_to='photos', verbose_name='Foto (*)')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
+                ('description', models.CharField(help_text='Ingrese la descripcion del mueble',
+                                                 max_length=100, verbose_name='Descripcion (*)')),
+                ('year', models.IntegerField(
+                    blank=True, help_text='Ingrese el año del mueble', null=True, verbose_name='Año')),
+                ('capacity', models.IntegerField(
+                    blank=True, help_text='Ingrese la capacidad del mueble', null=True, verbose_name='Capacidad (*)')),
+                ('number_pieces', models.IntegerField(
+                    blank=True, help_text='Ingrese la numero de piezas del mueble',
+                    null=True, verbose_name='Numero de piezas (*)')),
+                ('serial', models.CharField(blank=True, help_text='Ingrese el serial del mueble',
+                                            max_length=100, null=True, verbose_name='Serial (*)')),
+                ('license', models.CharField(blank=True, help_text='Ingrese la placa del mueble',
+                                             max_length=100, null=True, verbose_name='Placa (*)')),
+                ('height', models.IntegerField(
+                    blank=True, help_text='Altura del mueble', null=True, verbose_name='Altura (*)')),
+                ('width', models.IntegerField(
+                    blank=True, help_text='Anchura del mueble', null=True, verbose_name='Anchura (*)')),
+                ('length', models.IntegerField(
+                    blank=True, help_text='Longitud del mueble', null=True, verbose_name='Longitud (*)')),
+                ('useful_life', models.IntegerField(
+                    blank=True, help_text='Vida util del mueble', null=True, verbose_name='Vida util (*)')),
+                ('photo', models.ImageField(blank=True, help_text='Ingrese la foto del mueble',
+                                            null=True, upload_to='photos', verbose_name='Foto (*)')),
                 ('created_at', models.DateTimeField(auto_now=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('colour', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='parameters.Colour')),
-                ('function', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='parameters.Function')),
-                ('model', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='parameters.Model')),
-                ('unit', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='parameters.MeasureUnit')),
+                ('colour', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='parameters.Colour')),
+                ('function', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='parameters.Function')),
+                ('model', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='parameters.Model')),
+                ('unit', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='parameters.MeasureUnit')),
             ],
             options={
                 'verbose_name': 'Activo',
@@ -73,24 +96,42 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Property',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('description', models.CharField(help_text='Ingrese la descripcion del inmueble', max_length=100, verbose_name='Descripcion (*)')),
-                ('file_number', models.CharField(help_text='Ingrese el numero de expediente', max_length=100, verbose_name='Numero de expediente (*)')),
-                ('registry_number', models.CharField(help_text='Ingrese el numero de registro', max_length=100, verbose_name='Numero de registro (*)')),
-                ('folio_number', models.CharField(help_text='Ingrese el numero de folio', max_length=100, verbose_name='Numero de folio (*)')),
-                ('registry_day', models.DateField(help_text='Ingrese la fecha de registro', verbose_name='Fecha de registro(*)')),
-                ('registration_office', models.CharField(help_text='Ingrese la oficina de registro', max_length=100, verbose_name='Oficina de registro (*)')),
-                ('protocol', models.CharField(help_text='Ingrese el protocolo', max_length=100, verbose_name='Protocolo (*)')),
-                ('volume', models.CharField(help_text='Ingrese el tomo', max_length=100, verbose_name='Tomo (*)')),
-                ('quarter', models.CharField(help_text='Ingrese el trismetre', max_length=100, verbose_name='Trimestre (*)')),
-                ('down_payment', models.DecimalField(decimal_places=2, help_text='Ingrese el deposito de garantia', max_digits=10, verbose_name='Deposito de garantia (*)')),
-                ('rent_amount', models.DecimalField(decimal_places=2, help_text='Ingrese el monto de alquiler', max_digits=10, verbose_name='Monto de alquiler (*)')),
-                ('appraised_current', models.DecimalField(decimal_places=2, help_text='Ingrese el avaluo actual', max_digits=10, verbose_name='Avaluo actual (*)')),
-                ('appraised_commision', models.DecimalField(decimal_places=2, help_text='Ingrese el avaluo de comision', max_digits=10, verbose_name='Avaluo comision (*)')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
+                ('description', models.CharField(help_text='Ingrese la descripcion del inmueble',
+                                                 max_length=100, verbose_name='Descripcion (*)')),
+                ('file_number', models.CharField(help_text='Ingrese el numero de expediente',
+                                                 max_length=100, verbose_name='Numero de expediente (*)')),
+                ('registry_number', models.CharField(help_text='Ingrese el numero de registro',
+                                                     max_length=100, verbose_name='Numero de registro (*)')),
+                ('folio_number', models.CharField(help_text='Ingrese el numero de folio',
+                                                  max_length=100, verbose_name='Numero de folio (*)')),
+                ('registry_day', models.DateField(
+                    help_text='Ingrese la fecha de registro', verbose_name='Fecha de registro(*)')),
+                ('registration_office', models.CharField(help_text='Ingrese la oficina de registro',
+                                                         max_length=100, verbose_name='Oficina de registro (*)')),
+                ('protocol', models.CharField(help_text='Ingrese el protocolo',
+                                              max_length=100, verbose_name='Protocolo (*)')),
+                ('volume', models.CharField(help_text='Ingrese el tomo',
+                                            max_length=100, verbose_name='Tomo (*)')),
+                ('quarter', models.CharField(help_text='Ingrese el trismetre',
+                                             max_length=100, verbose_name='Trimestre (*)')),
+                ('down_payment', models.DecimalField(decimal_places=2, help_text='Ingrese el deposito de garantia',
+                                                     max_digits=10, verbose_name='Deposito de garantia (*)')),
+                ('rent_amount', models.DecimalField(decimal_places=2, help_text='Ingrese el monto de alquiler',
+                                                    max_digits=10, verbose_name='Monto de alquiler (*)')),
+                ('appraised_current', models.DecimalField(decimal_places=2,
+                                                          help_text='Ingrese el avaluo actual', max_digits=10,
+                                                          verbose_name='Avaluo actual (*)')),
+                ('appraised_commision', models.DecimalField(decimal_places=2,
+                                                            help_text='Ingrese el avaluo de comision', max_digits=10,
+                                                            verbose_name='Avaluo comision (*)')),
                 ('created_at', models.DateTimeField(auto_now=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('function', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='parameters.Function')),
-                ('purlieu', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='parameters.Purlieu')),
+                ('function', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='parameters.Function')),
+                ('purlieu', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='parameters.Purlieu')),
             ],
             options={
                 'verbose_name': 'Inmueble',
@@ -100,19 +141,35 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Semoviente',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('description', models.CharField(help_text='Ingrese la descripcion del semoviente', max_length=100, verbose_name='Descripcion (*)')),
-                ('birth_day', models.DateField(default=False, help_text='Ingrese la fecha de nacimiento', verbose_name='Fecha de nacimiento (*)')),
-                ('birth_weight', models.DecimalField(decimal_places=2, help_text='Ingrese el peso de nacimiento', max_digits=10, verbose_name='Peso de nacimiento (*)')),
-                ('birth_estimated_value', models.DecimalField(decimal_places=2, help_text='Ingrese el valor estimado de nacimiento', max_digits=10, verbose_name='Valor estimado de nacimiento (*)')),
-                ('current_weight', models.DecimalField(decimal_places=2, help_text='Ingrese el peso actual', max_digits=10, verbose_name='Peso actual (*)')),
-                ('acquisition_value', models.DecimalField(decimal_places=2, help_text='Ingrese el valor de adquisicion', max_digits=10, verbose_name='Valor de adquisicion (*)')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
+                ('description', models.CharField(help_text='Ingrese la descripcion del semoviente',
+                                                 max_length=100, verbose_name='Descripcion (*)')),
+                ('birth_day', models.DateField(default=False,
+                                               help_text='Ingrese la fecha de nacimiento',
+                                               verbose_name='Fecha de nacimiento (*)')),
+                ('birth_weight', models.DecimalField(decimal_places=2, help_text='Ingrese el peso de nacimiento',
+                                                     max_digits=10, verbose_name='Peso de nacimiento (*)')),
+                ('birth_estimated_value', models.DecimalField(decimal_places=2,
+                                                              help_text='Ingrese el valor estimado de nacimiento',
+                                                              max_digits=10,
+                                                              verbose_name='Valor estimado de nacimiento (*)')),
+                ('current_weight', models.DecimalField(decimal_places=2,
+                                                       help_text='Ingrese el peso actual', max_digits=10,
+                                                       verbose_name='Peso actual (*)')),
+                ('acquisition_value', models.DecimalField(decimal_places=2,
+                                                          help_text='Ingrese el valor de adquisicion', max_digits=10,
+                                                          verbose_name='Valor de adquisicion (*)')),
                 ('created_at', models.DateTimeField(auto_now=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('breed', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='parameters.Breed')),
-                ('gender', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='parameters.Gender')),
-                ('semoviente_suc', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='goods.Semoviente')),
-                ('species', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='parameters.Species')),
+                ('breed', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='parameters.Breed')),
+                ('gender', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='parameters.Gender')),
+                ('semoviente_suc', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='goods.Semoviente')),
+                ('species', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='parameters.Species')),
             ],
             options={
                 'verbose_name': 'Semoviente',
@@ -122,21 +179,25 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='assets',
             name='catalog',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='goods.Catalog'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to='goods.Catalog'),
         ),
         migrations.AddField(
             model_name='assets',
             name='furnishing',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='goods.Furnishing'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to='goods.Furnishing'),
         ),
         migrations.AddField(
             model_name='assets',
             name='property',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='goods.Property'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to='goods.Property'),
         ),
         migrations.AddField(
             model_name='assets',
             name='semoviente',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='goods.Semoviente'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to='goods.Semoviente'),
         ),
     ]
