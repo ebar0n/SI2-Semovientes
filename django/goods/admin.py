@@ -113,6 +113,7 @@ class PropertyAdmin(GoodsAdmin):
                      'file_number', 'registry_number', 'registry_day')
     list_filter = ('registry_day',)
 
+
 @admin.register(models.Semoviente)
 class SemovienteAdmin(GoodsAdmin):
     list_display = ('__str__', 'get_name', 'get_email_correlative', 'get_unitAdministrive',
