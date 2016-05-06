@@ -57,7 +57,12 @@ class Species(models.Model):
         verbose_name_plural = 'Especies'
 
     def __str__(self):
-        return self.name
+        strs = ''
+        name = self.name
+        while self.specie_suc:
+            strs = self.specie_suc.name + ' - ' + strs
+            self = self.specie_suc
+        return strs + name
 
 
 class Gender(models.Model):
@@ -115,7 +120,7 @@ class MeasureUnit(models.Model):
         verbose_name_plural = 'Unidades de medida'
 
     def __str__(self):
-        return self.name
+        return '{} ({})'.format(self.name, self.unit)
 
 
 class Colour(models.Model):
