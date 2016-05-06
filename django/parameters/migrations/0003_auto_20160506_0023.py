@@ -20,11 +20,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='species',
             name='specie_suc',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='parameters.Species', verbose_name='Especie (*)'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
+                                    to='parameters.Species', verbose_name='Especie (*)'),
         ),
         migrations.AlterField(
             model_name='model',
             name='make',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='parameters.Make', verbose_name='Marca (*)'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                    to='parameters.Make', verbose_name='Marca (*)'),
         ),
     ]
