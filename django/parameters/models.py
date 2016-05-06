@@ -80,7 +80,7 @@ class Function(models.Model):
         verbose_name_plural = 'Funciones'
 
     def __str__(self):
-        return self.name
+        return self.description
 
 
 class Species(models.Model):
@@ -89,6 +89,13 @@ class Species(models.Model):
         max_length=100,
         verbose_name="Nombre (*)",
         help_text="Ingrese el nombre de la especie"
+    )
+
+    specie_suc = models.ForeignKey(
+        'Species',
+        verbose_name="Especie (*)",
+        null=True,
+        blank=True
     )
 
     created_at = models.DateTimeField(
@@ -130,32 +137,6 @@ class Gender(models.Model):
     class Meta:
         verbose_name = 'Genero'
         verbose_name_plural = 'Generos'
-
-    def __str__(self):
-        return self.name
-
-
-class Breed(models.Model):
-
-    name = models.CharField(
-        max_length=100,
-        verbose_name="Nombre (*)",
-        help_text="Ingrese el nombre de la raza"
-    )
-
-    created_at = models.DateTimeField(
-        auto_now=True,
-        editable=False,
-    )
-
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        editable=False,
-    )
-
-    class Meta:
-        verbose_name = 'Raza'
-        verbose_name_plural = 'Razas'
 
     def __str__(self):
         return self.name
@@ -254,7 +235,8 @@ class Model(models.Model):
     )
 
     make = models.ForeignKey(
-        'Make'
+        'Make',
+        verbose_name="Marca (*)",
     )
 
     created_at = models.DateTimeField(
@@ -272,4 +254,4 @@ class Model(models.Model):
         verbose_name_plural = 'Modelos'
 
     def __str__(self):
-        return self.name
+        return '{} - {}'.format(self.make, self.name)
