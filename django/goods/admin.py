@@ -13,6 +13,7 @@ class CatalogAdmin(admin.ModelAdmin):
         return obj.pk
     codigo.short_description = 'Código'
 
+
 class PurlieuInline(admin.StackedInline):
     model = models.Purlieu
 
