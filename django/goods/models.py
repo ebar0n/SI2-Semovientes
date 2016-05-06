@@ -295,7 +295,6 @@ class Semoviente(models.Model):
     )
 
     birth_day = models.DateField(
-        default=False,
         verbose_name="Fecha de nacimiento (*)",
         help_text="Ingrese la fecha de nacimiento"
     )
@@ -337,7 +336,7 @@ class Semoviente(models.Model):
     )
 
     semoviente_suc = models.ForeignKey(
-        'Semoviente'
+        'Semoviente', null=True, blank=True
     )
 
     created_at = models.DateTimeField(
