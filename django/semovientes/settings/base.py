@@ -51,6 +51,8 @@ INSTALLED_APPS = (
     'accounts',
     'regions',
     'entities',
+    'parameters',
+    'goods',
 )
 
 MIDDLEWARE_CLASSES = (
