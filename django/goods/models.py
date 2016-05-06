@@ -281,10 +281,6 @@ class Semoviente(models.Model):
         'parameters.Gender'
     )
 
-    breed = models.ForeignKey(
-        'parameters.Breed'
-    )
-
     semoviente_suc = models.ForeignKey(
         'Semoviente'
     )

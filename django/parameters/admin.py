@@ -1,9 +1,14 @@
 from django.contrib import admin
-
 from parameters import models
 
 
 # Register your models here.
+
+@admin.register(models.Species)
+class SpeciesAdmin(admin.ModelAdmin):
+    pass
+
+
 @admin.register(models.Function)
 class FunctionAdmin(admin.ModelAdmin):
     pass
@@ -11,11 +16,6 @@ class FunctionAdmin(admin.ModelAdmin):
 
 @admin.register(models.Gender)
 class GenderAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(models.Breed)
-class BreedAdmin(admin.ModelAdmin):
     pass
 
 
