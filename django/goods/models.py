@@ -83,19 +83,23 @@ class Furnishing(models.Model):
     )
 
     model = models.ForeignKey(
-        'parameters.Model'
+        'parameters.Model',
+        verbose_name='Modelo'
     )
 
     colour = models.ForeignKey(
-        'parameters.Colour'
+        'parameters.Colour',
+        verbose_name='Color'
     )
 
     unit = models.ForeignKey(
-        'parameters.MeasureUnit'
+        'parameters.MeasureUnit',
+        verbose_name='Unidad de medida'
     )
 
     function = models.ForeignKey(
-        'parameters.Function'
+        'parameters.Function',
+        verbose_name='Uso'
     )
 
     created_at = models.DateTimeField(
@@ -122,12 +126,6 @@ class Property(models.Model):
         max_length=100,
         verbose_name="Descripcion (*)",
         help_text="Ingrese la descripcion del inmueble"
-    )
-
-    file_number = models.CharField(
-        max_length=100,
-        verbose_name="Numero de expediente (*)",
-        help_text="Ingrese el numero de expediente"
     )
 
     file_number = models.CharField(
@@ -206,7 +204,8 @@ class Property(models.Model):
     )
 
     function = models.ForeignKey(
-        'parameters.Function'
+        'parameters.Function',
+        verbose_name='Uso'
     )
 
     created_at = models.DateTimeField(
@@ -328,15 +327,20 @@ class Semoviente(models.Model):
     )
 
     species = models.ForeignKey(
-        'parameters.Species'
+        'parameters.Species',
+        verbose_name='Especie'
     )
 
     gender = models.ForeignKey(
-        'parameters.Gender'
+        'parameters.Gender',
+        verbose_name='Genero'
     )
 
     semoviente_suc = models.ForeignKey(
-        'Semoviente', null=True, blank=True
+        'Semoviente',
+        verbose_name='Semoviente madre',
+        null=True,
+        blank=True,
     )
 
     created_at = models.DateTimeField(
@@ -384,7 +388,12 @@ class Catalog(models.Model):
         verbose_name_plural = 'Catalogos'
 
     def __str__(self):
-        return self.classification
+        strs = ''
+        name = self.classification
+        while self.origin:
+            strs = self.origin.classification + ' - ' + strs
+            self = self.origin
+        return strs + name
 
 
 class Assets(models.Model):
@@ -410,7 +419,8 @@ class Assets(models.Model):
     )
 
     administrative_unit = models.ForeignKey(
-        'entities.AdministrativeUnit'
+        'entities.AdministrativeUnit',
+        verbose_name='Unidad Administrativa'
     )
 
     furnishing = models.OneToOneField(
@@ -426,7 +436,8 @@ class Assets(models.Model):
     )
 
     catalog = models.ForeignKey(
-        'Catalog'
+        'Catalog',
+        verbose_name='Catalogo'
     )
 
     created_at = models.DateTimeField(

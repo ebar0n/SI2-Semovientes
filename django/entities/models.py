@@ -74,7 +74,8 @@ class AdministrativeUnit(models.Model):
     )
 
     entity = models.ForeignKey(
-        'Entity'
+        'Entity',
+        verbose_name='Entidad'
     )
 
     created_at = models.DateTimeField(
@@ -92,4 +93,4 @@ class AdministrativeUnit(models.Model):
         verbose_name_plural = 'Unidades administrativas'
 
     def __str__(self):
-        return self.name
+        return '{} - {}'.format(self.entity, self.name)

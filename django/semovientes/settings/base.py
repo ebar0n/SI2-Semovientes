@@ -91,8 +91,8 @@ WSGI_APPLICATION = 'semovientes.wsgi.application'
 
 DATABASES = {
     'default': env.db('DATABASE_URL')
-    #'default': {
-    #    'ENGINE': 'django.db.backends.sqlite3',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
     #    'NAME': 'local',
     #}
 }

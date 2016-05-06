@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
 
-class GoodsConfig(AppConfig):
-    name = 'Regiones'
+class RegionsConfig(AppConfig):
+    name = 'regions'
+    verbose_name = 'Regiones'

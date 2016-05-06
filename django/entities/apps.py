@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class EntitiesConfig(AppConfig):
-    name = 'Entidades'
+    name = 'entities'
+    verbose_name = 'Entidades'

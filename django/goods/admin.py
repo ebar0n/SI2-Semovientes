@@ -29,7 +29,6 @@ class AssetsInline(admin.StackedInline):
 
 
 class GoodsAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'get_name', 'get_email_correlative')
     list_filter = ()
     search_fields = ()
     inlines = (AssetsInline,)
@@ -41,6 +40,10 @@ class GoodsAdmin(admin.ModelAdmin):
     def get_email_correlative(self, obj):
         return obj.assets.correlative
     get_email_correlative.short_description = 'Correlativo'
+
+    def get_unitAdministrive(self, obj):
+        return str(obj.assets.administrative_unit)
+    get_unitAdministrive.short_description = 'Unidad Administrativa'
 
     def response_add(self, request, obj, post_url_continue=None):
 
@@ -93,14 +96,24 @@ class GoodsAdmin(admin.ModelAdmin):
 
 @admin.register(models.Furnishing)
 class FurnishingAdmin(GoodsAdmin):
-    pass
+    list_display = ('__str__', 'get_name',
+                    'get_email_correlative', 'get_unitAdministrive', 'model', 'colour', 'unit')
+    search_fields = ('assets__name', 'assets__correlative',
+                     'colour__name', 'model__name', 'unit__name')
 
 
 @admin.register(models.Property)
 class PropertyAdmin(GoodsAdmin):
     inlines = (PurlieuInline, AssetsInline,)
+    list_display = ('__str__', 'get_name', 'get_email_correlative', 'get_unitAdministrive',
+                    'file_number', 'registry_number', 'registry_day')
+    search_fields = ('assets__name', 'assets__correlative',
+                     'file_number', 'registry_number', 'registry_day')
 
 
 @admin.register(models.Semoviente)
 class SemovienteAdmin(GoodsAdmin):
-    pass
+    list_display = ('__str__', 'get_name', 'get_email_correlative', 'get_unitAdministrive',
+                    'species', 'gender',)
+    search_fields = ('assets__name', 'assets__correlative',
+                     'species__name', 'gender__name',)
